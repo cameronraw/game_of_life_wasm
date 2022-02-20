@@ -1,15 +1,22 @@
 use crate::cell_state::CellState;
+use serde::{Serialize, Deserialize};
 
+#[derive(Serialize, Deserialize)]
 pub struct Cell {
     state: CellState
 }
 
 impl Cell {
-    fn get_state(&self) -> CellState {
+
+    pub fn new(init_state: CellState) -> Cell {
+        Cell { state: init_state }
+    }
+
+    pub fn get_state(&self) -> CellState {
         self.state
     }
 
-    fn update_state(&mut self, no_of_live_neighbours: u8){
+    pub fn update_state(&mut self, no_of_live_neighbours: u8){
         if no_of_live_neighbours == 3 {
             self.state = CellState::ALIVE;
         }
