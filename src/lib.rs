@@ -2,9 +2,9 @@ use cell_state::CellState;
 use wasm_bindgen::prelude::*;
 use cell::Cell as GameCell;
 
+mod game;
 use game::Game as Game;
 
-mod game;
 mod cell_state;
 mod cell;
 
