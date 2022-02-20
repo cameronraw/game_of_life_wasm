@@ -1,11 +1,12 @@
 use cell_state::CellState;
-use game::Game;
 use wasm_bindgen::prelude::*;
 use cell::Cell as GameCell;
 
+use game::Game as Game;
+
+mod game;
 mod cell_state;
 mod cell;
-pub mod game;
 
 #[wasm_bindgen]
 pub fn createGame(size: usize) -> JsValue {
