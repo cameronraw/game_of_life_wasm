@@ -27,7 +27,7 @@ impl Cell {
     }
 
     pub fn create_random_cell() -> Cell {
-        let num: u8 = rand::thread_rng().gen_range(0..1);
+        let num: u8 = rand::thread_rng().gen_range(0..2);
         let this_cell_state = match num {
             0 => CellState::DEAD,
             1 => CellState::ALIVE,
@@ -35,6 +35,12 @@ impl Cell {
         };
         return Cell::new(this_cell_state);
     }
+}
+
+#[test]
+fn should_create_random_cell() {
+    let cell = Cell::create_random_cell();
+    assert!(matches!(cell.get_state(), CellState::ALIVE | CellState::DEAD));
 }
 
 mod live_cell_should {
