@@ -1,5 +1,4 @@
 use cell_state::CellState;
-use game::Game;
 use wasm_bindgen::prelude::*;
 use cell::Cell as GameCell;
 
@@ -7,21 +6,10 @@ mod cell_state;
 mod cell;
 pub mod game;
 
-#[wasm_bindgen]
-pub fn createGame(size: usize) -> JsValue {
-    // JsValue::from_serde(&Game::new(10)).unwrap()
+/* pub fn createGame(size: usize) -> JsValue {
 
-    let created_game = Game::new(size);
 
-    let grid = created_game.get_grid();
-
-    let to_js_attempt = JsValue::from_serde(&grid);
-
-    return match to_js_attempt {
-        Ok(to_js_attempt) => to_js_attempt,
-        Err(err) => JsValue::from_str(&err.to_string()),
-    }
-}
+} */
 
 #[wasm_bindgen]
 pub fn getExampleCellState() -> JsValue {
@@ -64,7 +52,7 @@ pub fn getExampleCellVec2() -> JsValue {
 
     let mut vec = Vec::new();
     for _i in 0..10 {
-        vec.push(Game::create_random_cell())
+        vec.push(GameCell::create_random_cell())
     }
     let to_js_attempt = JsValue::from_serde(&vec);
 

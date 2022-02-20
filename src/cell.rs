@@ -1,4 +1,5 @@
 use crate::cell_state::CellState;
+use rand::Rng;
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize)]
@@ -23,6 +24,16 @@ impl Cell {
         if no_of_live_neighbours < 2 || no_of_live_neighbours > 3 {
             self.state = CellState::DEAD;
         }
+    }
+
+    pub fn create_random_cell() -> Cell {
+        let num: u8 = rand::thread_rng().gen_range(0..1);
+        let this_cell_state = match num {
+            0 => CellState::DEAD,
+            1 => CellState::ALIVE,
+            _ => panic!("Something has gone wrong.")
+        };
+        return Cell::new(this_cell_state);
     }
 }
 
