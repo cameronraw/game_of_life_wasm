@@ -1,5 +1,5 @@
 use cell_state::CellState;
-use game::game::Game;
+use game::Game;
 use wasm_bindgen::prelude::*;
 use cell::Cell as GameCell;
 
